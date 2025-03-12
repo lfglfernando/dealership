@@ -1,6 +1,282 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
+/* General Styling */
+*, *:before, *:after {
   box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  font-weight: 700; 
+}
+
+p {
+  font-weight: 300; 
+  color: #666; 
+}
+
+header, nav, footer {
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  padding: 1rem;
+}
+
+
+/* Header */
+#top-header {
+  background-color: white;
+  height: auto;
+  color: #222;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.siteName a {
+  color: #222;
+  font-size: 2rem; 
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.siteName a:hover {
+  color: #007BFF;
+}
+
+#tools a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#tools a:hover {
+  text-decoration: underline;
+}
+
+/* Navigation */
+nav {
+  background-color: #333;
+  padding: 0.5rem 4rem;
+  text-align: center;
+  color: white;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #007BFF;
+  border-radius: 5px;
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+  background: url('/images/vehicles/delorean.jpg') no-repeat center;
+  background-size: contain;
+  width: 100%;
+  height: 50vh;
+  min-height: 300px;
+  color: #007BFF;
+  display: flex;
+  align-items: flex-start; 
+  justify-content: flex-start;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-text {
+  background: rgba(55, 55, 55, 0.7); 
+  padding: 1rem;
+  border-radius: 8px; 
+  display: inline-block;
+  color: white;
+}
+
+.hero-text ul {
+    list-style: none; 
+    padding: 0;       
+    margin: 0;     
+}
+
+.hero-text img {
+  width: 180px;
+  margin-top: 10px;
+  
+}
+
+/* Reviews and Upgrades */
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.reviews {
+  width: 48%;
+  text-align: center;
+}
+
+.reviews ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block; 
+}
+
+.reviews li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+}
+
+.reviews li::before {
+  content: "•"; 
+  font-size: 1.5rem;
+  color: black; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+}
+
+.upgrades-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px; 
+  margin: auto; 
+}
+
+.upgrade-item {
+  text-align: center;
+  background-color: #007BFF;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
+}
+
+
+.upgrade-item img {
+  max-width: 4rem;
+  height: 4rem;
+}
+
+.upgrade-item a {
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.upgrade-item p{
+  color: white !important;
+}
+
+
+
+.upgrade-item a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .content-wrapper {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  body {
+    background: white;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .reviews, .upgrades {
+      width: 100%;
+  }
+
+  .upgrades-grid {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 895px) {
+  .upgrades-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container {
+    background-color: white;
+    width: 90%;
+    max-width: 900px;
+    padding: 2rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border: 7px solid #007BFF;
+    border-radius: 1rem;
+    margin: 3rem auto; 
+    display: flex;
+    flex-direction: column;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('/images/site/checkerboard.jpg') repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 2rem;
+    background: url('/images/vehicles/delorean.jpg') no-repeat center/cover;
+    height: 400px;
+    color: #007BFF;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+  }
+
 }
