@@ -1,17 +1,38 @@
-<main>
-    <h1>Inventory Management</h1>
-  
-    <% if (messages && messages.notice && messages.notice.length > 0) { %>
-      <div class="flash-message success">
-        <% messages.notice.forEach(function(msg){ %>
-          <p><%= msg %></p>
-        <% }) %>
-      </div>
-    <% } %>
-  
-    <ul>
-      <li><a href="/inv/add-classification">Add New Classification</a></li>
-      <li><a href="/inv/add-inventory">Add New Vehicle</a></li>
-    </ul>
-  </main>
-  
+<main class="inv-management">
+  <h1>Inventory Management</h1>
+
+  <!-- Flash messages -->
+  <% if (messages && messages.notice && messages.notice.length > 0) { %>
+    <div class="flash-message success">
+      <% messages.notice.forEach(function(msg){ %>
+        <p><%= msg %></p>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <!-- Buttons -->
+  <div class="button-group">
+    <a class="btn blue" href="/inv/add-classification">➕ Add New Classification</a>
+    <a class="btn red" href="/inv/add-inventory">🚗 Add New Vehicle</a>
+  </div>
+
+  <!-- Management Section -->
+  <section class="inv-section">
+    <h2>Manage Inventory</h2>
+    <p>Select a classification to see inventory items.</p>
+
+    <!-- Dropdown select list -->
+    <div class="dropdown-container">
+      <%- classificationSelect %>
+    </div>
+
+    <!-- Table that will be filled by JavaScript -->
+    <table id="inventoryDisplay"></table>
+
+    <!-- Message if JavaScript is disabled -->
+    <noscript><p><strong>JavaScript must be enabled to use this page.</strong></p></noscript>
+  </section>
+</main>
+
+<!-- Hook up the script -->
+<script src="/js/inventory.js"></script>

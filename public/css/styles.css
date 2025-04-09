@@ -576,3 +576,140 @@ form button {
 form button:hover {
   background-color: #e0e0e0;
 }
+
+/* Layout general */
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Títulos */
+main h1, main h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+main p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+/* Enlaces */
+main a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+main a:hover {
+  text-decoration: underline;
+}
+
+/* Select */
+#classificationList {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Tabla de inventario */
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#inventoryDisplay thead {
+  background-color: #2c3e50;
+  color: #fff;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#inventoryDisplay tr:hover {
+  background-color: #f1f1f1;
+}
+
+.inv-management {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.btn {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  display: inline-block;
+  color: white;
+}
+
+.btn.blue {
+  background-color: #007bff;
+}
+
+.btn.red {
+  background-color: #dc3545;
+}
+
+.inv-section {
+  background-color: #f9f9f9;
+  padding: 1.2rem;
+  border-radius: 10px;
+}
+
+.dropdown-container {
+  margin: 1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+
+select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  position: relative;
+  z-index: 2;
+}
+
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+#inventoryDisplay th {
+  background-color: #007bff;
+  color: white;
+}

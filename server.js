@@ -1,3 +1,4 @@
+const cookieParser = require("cookie-parser")
 const express = require("express")
 const session = require("express-session")
 const bodyParser = require("body-parser")
@@ -13,36 +14,53 @@ const utilities = require("./utilities/")
 
 const app = express()
 
+// Session middleware
 app.use(session({
   store: new (require("connect-pg-simple")(session))({
     createTableIfMissing: true,
     pool,
   }),
   secret: process.env.SESSION_SECRET,
-  resave: true,
+  resave: false,
   saveUninitialized: true,
   name: "sessionId",
 }))
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+// Flash messages
+app.use(flash())
 
-app.use(flash()) 
-app.use(function (req, res, next) {
-  res.locals.getMessages = () => req.flash() // ✅ pasa función en vez de consumirlos
+// Make flash messages available via getMessages() in all views
+app.use((req, res, next) => {
+  res.locals.getMessages = () => req.flash()
   next()
 })
 
+// Parse JSON and form data
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
 
+// JWT token check
+app.use(utilities.checkJWTToken)
+
+// Logged-in status for conditional view rendering
+app.use((req, res, next) => {
+  res.locals.loggedin = !!res.locals.accountData
+  next()
+})
+
+// Set view engine and layout
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout")
 
+// Static files and routing
 app.use(static)
 app.get("/", baseController.buildHome)
 app.use("/inv", inventoryRoute)
 app.use("/account", accountRoute)
 
+// 404 Handler
 app.use(async (req, res, next) => {
   let nav
   try {
@@ -57,6 +75,7 @@ app.use(async (req, res, next) => {
   })
 })
 
+// Global error handler
 app.use(utilities.globalErrorHandler)
 
 const port = process.env.PORT || 5500
