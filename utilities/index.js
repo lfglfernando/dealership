@@ -62,22 +62,26 @@ Util.buildClassificationGrid = async function(data){
 /* **************************************
 * Build the inventory detail HTML
 * ************************************ */
-Util.buildVehicleDetail = async function(data) {
-  const item = data[0]
+Util.buildVehicleDetail = async function(vehicle) {
+  if (!vehicle || typeof vehicle !== "object") {
+    return '<p class="notice">Vehicle details not found.</p>'
+  }
+
   let detail = `
     <section id="vehicle-detail">
-      <img src="${item.inv_image}" alt="Image of ${item.inv_make} ${item.inv_model}" />
+      <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}" />
       <div class="vehicle-info">
-        <h2>${item.inv_year} ${item.inv_make} ${item.inv_model}</h2>
-        <p><strong>Price:</strong> $${new Intl.NumberFormat('en-US').format(item.inv_price)}</p>
-        <p><strong>Description:</strong> ${item.inv_description}</p>
-        <p><strong>Color:</strong> ${item.inv_color}</p>
-        <p><strong>Mileage:</strong> ${new Intl.NumberFormat('en-US').format(item.inv_miles)} miles</p>
+        <h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h2>
+        <p><strong>Price:</strong> $${new Intl.NumberFormat("en-US").format(vehicle.inv_price)}</p>
+        <p><strong>Description:</strong> ${vehicle.inv_description}</p>
+        <p><strong>Color:</strong> ${vehicle.inv_color}</p>
+        <p><strong>Mileage:</strong> ${new Intl.NumberFormat("en-US").format(vehicle.inv_miles)} miles</p>
       </div>
     </section>
   `
   return detail
 }
+
 
 /* **************************************
 * Error handling middleware

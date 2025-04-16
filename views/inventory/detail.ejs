@@ -1,7 +1,20 @@
-<% if (title) { %>
+<% if (title && detail) { %>
+  <main class="vehicle-detail">
     <h1><%= title %></h1>
-    <%- detail %>
-  <% } else { %>
-    <script>window.location.href = "/";</script>
+
+    <section class="vehicle-info">
+      <%- detail %>
+    </section>
+
+    <% if (loggedin) { %>
+      <form action="/favorites/add" method="post">
+        <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
+        <button type="submit">Add to Favorites ❤️</button>
+      </form>
+    <% } %>
+    
+
+  </main>
+<% } else { %>
+  <script>window.location.href = "/";</script>
 <% } %>
-  

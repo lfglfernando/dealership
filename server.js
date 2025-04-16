@@ -60,6 +60,10 @@ app.get("/", baseController.buildHome)
 app.use("/inv", inventoryRoute)
 app.use("/account", accountRoute)
 
+const favoriteRoute = require("./routes/favoriteRoute")
+app.use("/favorites", favoriteRoute)
+
+
 // 404 Handler
 app.use(async (req, res, next) => {
   let nav
